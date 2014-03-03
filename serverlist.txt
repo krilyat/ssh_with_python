@@ -1,0 +1,2 @@
+bo-inmx1-01.ina.fr,root,ina2007,
+w-inmx1-01.ina.fr,root,ina2007,

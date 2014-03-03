@@ -1,0 +1,21 @@
+"= Hostname =
+hostname
+"== Configuration ==
+"=== Firewall ===
+"<pre>
+iptables -nL
+"</pre>
+"=== Résolution DNS ===
+"<pre>
+cat /etc/resolv.conf
+"</pre>
+"=== Montages réseaux ===
+"* Statique
+"<pre>
+cat /etc/fstab | grep 'nfs\|cifs'
+"</pre>
+"* Dynamique
+"'''/etc/auto.master'''
+"<pre>
+cat /etc/auto.master | grep -v '#\|/misc\|/net\|^$\|+auto.master'
+"</pre>
