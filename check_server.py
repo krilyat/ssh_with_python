@@ -16,7 +16,6 @@ server.add_argument('-p', '--password', action='store_true',  help='ask for pass
 parser.add_argument('-c', '--command', type=str, help='command')
 parser.add_argument('-S', '--scenario', type=str, help='scenario to play')
 parser.add_argument('--silent', action='store_true', help='print only result of the command')
-parser.add_argument('-o', '--output', type=str, help='output')
 
 args = parser.parse_args()
 
@@ -33,7 +32,8 @@ def main():
 def processServerList():
     with open(args.file, 'r') as List:
         for line in List:
-            hosts.append(line.split(','))
+            if line[0] != '#':
+                hosts.append(line.split(','))
 
     connect()
     if args.interlace:
@@ -72,7 +72,25 @@ def runall(command):
 
 def run(command, host, conn):
     if command[0] == '"':
-        print command.strip('"')
+        print command.lstrip('"').replace('\n', '')
+    elif command[0] == ";":
+        prefix, suffix, subcmd, subprefix, subsuffix, cmd, = command.lstrip(';').split(';') 
+        stdin, stdout, stderr = conn.exec_command(cmd)
+        stdin.close()
+        for line in stdout.read().splitlines():
+            if args.silent:
+                interpret(host, conn, line, prefix, suffix, subcmd, subprefix, subsuffix)
+            else:
+                print 'host: %s: %s' % (host[0], line)
+    elif command[0] == ":":
+        prefix, suffix, subcmd, subprefix, subsuffix, cmd, = command.lstrip(':').split(':') 
+        stdin, stdout, stderr = conn.exec_command(cmd)
+        stdin.close()
+        for line in stdout.read().splitlines():
+            if args.silent:
+                interpret(host, conn, line, prefix, suffix, subcmd, subprefix, subsuffix)
+            else:
+                print 'host: %s: %s' % (host[0], line)
     else:
         stdin, stdout, stderr = conn.exec_command(command)
         stdin.close()
@@ -82,6 +100,15 @@ def run(command, host, conn):
             else:
                 print 'host: %s: %s' % (host[0], line)
 
+def interpret(host, conn, line, prefix, suffix, subcmd, subprefix, subsuffix):
+    print '%s%s%s' % (prefix, line, suffix)
+    if subcmd:
+        if subprefix:
+            print subprefix
+        run("%s" % (subcmd.replace('{}', line)), host, conn)
+        if subsuffix:
+            print subsuffix
+    
 def close():
     for conn in connections:
         conn.close()
