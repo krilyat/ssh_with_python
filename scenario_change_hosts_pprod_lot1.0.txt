@@ -1,0 +1,7 @@
+hostname
+#Modif Hosts
+sed -i -e's/.*172\.16\.110\.5[[:space:]].*/172.16.17.74\tdbm-inmx1-02.ina.fr dbm-inmx1-02/g' -e 's/.*172\.16\.110\.70[[:space:]].*/172.16.17.71\tldap-inmx1-01.ina.fr ldap-inmx1-01 memcache.preprod.inamediapro.com/g' -e 's/.*172\.16\.110\.6[[:space:]].*/172.16.17.75\tdbs-inmx1-01.ina.fr dbs-inmx1-01/g' /etc/hosts
+#Modif iptables
+sed -i -e 's/172\.16\.110\.5[[:space:]]/172.16.17.74 /g' -e 's/172\.16\.110\.70[[:space:]]/172.16.17.71 /g' -e 's/172\.16\.110\.6[[:space:]]/172.16.17.75 /g' /etc/sysconfig/iptables
+#correction des hosts (erreur)
+sed -i -e 's/.*172\.16\.17\.74[[:space:]].*/172.16.17.74\tdbm-inmx1-02.ina.fr dbm-inmx1-02/g' -e 's/.*172\.16\.17\.71[[:space:]].*/172.16.17.71\tldap-inmx1-01.ina.fr ldap-inmx1-01 memcache.preprod.inamediapro.com/g' -e 's/.*172\.16\.17\.75[[:space:]].*/172.16.17.75\tdbs-inmx1-01.ina.fr dbs-inmx1-01/g' /etc/hosts

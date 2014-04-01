@@ -16,6 +16,7 @@ server.add_argument('-p', '--password', action='store_true',  help='ask for pass
 parser.add_argument('-c', '--command', type=str, help='command')
 parser.add_argument('-S', '--scenario', type=str, help='scenario to play')
 parser.add_argument('--silent', action='store_true', help='print only result of the command')
+parser.add_argument('--verbose', action='store_true', help='print the command')
 
 args = parser.parse_args()
 
@@ -92,6 +93,8 @@ def run(command, host, conn):
             else:
                 print 'host: %s: %s' % (host[0], line)
     else:
+        if args.verbose:
+            print command
         stdin, stdout, stderr = conn.exec_command(command)
         stdin.close()
         for line in stdout.read().splitlines():
@@ -99,6 +102,9 @@ def run(command, host, conn):
                 print line
             else:
                 print 'host: %s: %s' % (host[0], line)
+        if args.verbose:
+            for line in stderr.read().splitlines():
+                print 'host: %s|Err: %s' % (host[0], line)
 
 def interpret(host, conn, line, prefix, suffix, subcmd, subprefix, subsuffix):
     print '%s%s%s' % (prefix, line, suffix)
