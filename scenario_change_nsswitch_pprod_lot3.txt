@@ -1,0 +1,2 @@
+hostname
+sed -i 's/^hosts:.*/hosts:\tfiles dns/g' /etc/nsswitch.conf

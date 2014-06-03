@@ -1,0 +1,11 @@
+hostname
+#Modif hosts
+#echo -ne "127.0.0.1\tlocalhost.localdomain localhost\n" > /etc/hosts
+#Modif resolv.conf
+echo -ne "search ina.fr\nnameserver 172.16.12.100\n" > /etc/resolv.conf
+#Modif iptables
+#sed -i -e 's/172\.16\.110\.5[[:space:]]/172.16.17.74 /g' -e 's/172\.16\.110\.70[[:space:]]/172.16.17.71 /g' -e 's/172\.16\.110\.6[[:space:]]/172.16.17.75 /g' /etc/sysconfig/iptables
+#sed -i -e 's/172\.16\.110\.4[[:space:]]/172.16.17.73 /g' -e 's/172\.16\.110\.71[[:space:]]/172.16.17.72 /g' -e 's/172\.16\.110\.76[[:space:]]/172.16.17.70 /g' /etc/sysconfig/iptables
+#sed -i -e 's/172\.16\.110\.74[[:space:]]/172.16.17.78 /g' -e 's/172\.16\.110\.75[[:space:]]/172.16.17.79 /g' -e 's/172\.16\.110\.8[[:space:]]/172.16.17.82 /g' -e 's/172\.16\.110\.69[[:space:]]/172.16.15.12 /g' -e 's/172\.16\.110\.73[[:space:]]/172.16.15.14 /g' /etc/sysconfig/iptables
+#sed -i -e 's/172\.16\.110\.67[[:space:]]/172.16.17.76 /g' -e 's/172\.16\.110\.66[[:space:]]/172.16.17.77 /g' -e 's/172\.16\.110\.7[[:space:]]/172.16.17.81 /g' -e 's/172\.16\.110\.68[[:space:]]/172.16.15.11 /g' -e 's/172\.16\.110\.72[[:space:]]/172.16.15.13 /g' -e 's/172\.16\.110\.2[[:space:]]/172.16.17.80 /g' /etc/sysconfig/iptables
+#service iptables restart

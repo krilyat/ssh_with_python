@@ -5,3 +5,4 @@ sed -i -e 's/.*172\.16\.110\.4[[:space:]].*/172.16.17.73\tdbm-inmx1-01.ina.fr db
 sed -i -e 's/.*172\.16\.17\.73[[:space:]].*/172.16.17.73\tdbm-inmx1-01.ina.fr dbm-inmx1-01/g' -e 's/.*172\.16\.17\.72[[:space:]].*/172.16.17.72\tldap-inmx1-02.ina.fr ldap-inmx1-02 memcache.preprod.inamediapro.com/g' -e 's/.*172\.16\.17\.70[[:space:]].*/172.16.17.70\taphrodisiaque.ina.fr aphrodisiaque/g' /etc/hosts
 #correction des hosts (erreur)
 sed -i -e 's/172\.16\.110\.4[[:space:]]/172.16.17.73 /g' -e 's/172\.16\.110\.71[[:space:]]/172.16.17.72 /g' -e 's/172\.16\.110\.76[[:space:]]/172.16.17.70 /g' /etc/sysconfig/iptables
+service iptables restart
