@@ -1,0 +1,7 @@
+"Print text as it is with a '"' at the start of the line
+"execute the following command
+hostname
+"execute and format some command with some ';' or ':'
+";prefix;suffix;subcommand;prefix for subcommand;siffix for subcommand;command
+"the result of command is reuse with '{}' in the subcommand section
+:''':''':cat {}:<pre>:</pre>:if [ -f /etc/fstab ] ;then echo /etc/fstab;fi

@@ -56,7 +56,14 @@ def processServer():
         hosts.append([args.server, args.user, password])
 
     connect()
-    runall(args.command)
+    if args.scenario:
+        with open(args.scenario, 'r') as scenario:
+            for command in scenario:
+                runall(command)
+    elif args.command:
+        runall(args.command)
+    else:
+        print "use at least -S or -c"
     close()
 
 
