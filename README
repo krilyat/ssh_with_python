@@ -2,4 +2,4 @@ Couple of scripts to do some ssh stuff with paramiko
 
 run_prompt.py to get a prompt on one or multiple server
 
-run_scenari.py to do some automated list of command
+run_scenario.py to do some automated list of command
