@@ -1,6 +1,0 @@
-hostname
-#Modif Hosts
-sed -i -e 's/.*172\.16\.110\.74[[:space:]].*/172.16.17.78\tfe-inmx1-03.ina.fr fe-inmx1-03/g' -e 's/.*172\.16\.110\.75[[:space:]].*/172.16.17.79\tfe-inmx1-04.ina.fr fe-inmx1-04/g' -e 's/.*172\.16\.110\.8[[:space:]].*/172.16.17.82\tbesb-inmx1-02.ina.fr besb-inmx1-02/g' -e 's/.*172\.16\.110\.69[[:space:]].*\(visio\).*/172.16.15.12\tw-inmx1-02.ina.fr w-inmx1-02 visio.preprod.inamediapro.com visio.preprod/g' -e 's/.*172\.16\.110\.69[[:space:]].*/172.16.15.12\tw-inmx1-02.ina.fr w-inmx1-02/g' -e 's/.*172\.16\.110\.73[[:space:]].*/172.16.15.14\tvid-inmx1-02.ina.fr vid-inmx1-02/g' /etc/hosts
-#Modif iptables
-sed -i -e 's/172\.16\.110\.74[[:space:]]/172.16.17.78 /g' -e 's/172\.16\.110\.75[[:space:]]/172.16.17.79 /g' -e 's/172\.16\.110\.8[[:space:]]/172.16.17.82 /g' -e 's/172\.16\.110\.69[[:space:]]/172.16.15.12 /g' -e 's/172\.16\.110\.73[[:space:]]/172.16.15.14 /g' /etc/sysconfig/iptables
-service iptables restart
