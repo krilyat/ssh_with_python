@@ -5,7 +5,7 @@ import cmd
 from getpass import getpass
 
 
-parser = argparse.ArgumentParser(description='Retrive som information via ssh (paramiko)')
+parser = argparse.ArgumentParser(description='Retrive some information via ssh (paramiko)')
 serverlist = parser.add_argument_group('ServerList', 'Server List options')
 serverlist.add_argument('-f', '--file', type=str, help='file containing server to check')
 serverlist.add_argument('-i', '--interlace', action='store_true', help='launch one commande at a time on each host')
